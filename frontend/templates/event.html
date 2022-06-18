@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block headContent %}
+    <title>TIIImeline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='events.css') }}">
+{% endblock %}
+
+{% block navlinks %}
+    <a href="{{ url_for('main.index') }}">
+        <li>Home</li>
+    </a>
+    <a href="{{ url_for('events.view_events') }}">
+        <li>Events</li>
+    </a>
+    <a href="{{ url_for('groups.view_groups') }}">
+        <li>Groups</li>
+    </a>
+{% endblock %}
+
+{% block content %}
+    <h1>
+        {{ name }}
+    </h1>
+    <div class="desc">{{ description }}</div>
+
+{% endblock %}

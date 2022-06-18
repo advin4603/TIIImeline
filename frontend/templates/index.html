@@ -1,32 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "base.html" %}
+
+{% block headContent %}
     <title>TIIImeline</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-          rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-</head>
-<body>
-<header>
-    <nav>
-        <ul>
-            <li class="logo">TIIImeline</li>
-            <a href="">
-                <li>Home</li>
-            </a>
-            <a href="">
-                <li>Create</li>
-            </a>
-            <a href="">
-                <li>Search</li>
-            </a>
-        </ul>
-    </nav>
-</header>
-<main>
+{% endblock %}
+
+{% block navlinks %}
+    <a href="{{ url_for('events.view_events') }}">
+        <li>Events</li>
+    </a>
+    <a href="{{ url_for('groups.view_groups') }}">
+        <li>Groups</li>
+    </a>
+{% endblock %}
+
+{% block content %}
     <h1>Upcoming Events</h1>
     <ul>
         <li>
@@ -65,6 +53,4 @@
             </div>
         </li>
     </ul>
-</main>
-</body>
-</html>
+{% endblock %}

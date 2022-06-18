@@ -1,0 +1,44 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formBox {
+    border: solid;
+    padding: 5% 10%;
+    width: 40%;
+    margin-bottom: 5%;
+}
+
+.formBox > h1 {
+    margin-bottom: 15%;
+    text-align: center;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.field > input,textarea {
+    width: 100%;
+    padding: 2% 5%;
+    border: solid;
+    background-color: gray;
+}
+.field > input::placeholder, textarea::placeholder {
+    color: black;
+    border-color: initial;
+}
+
+.field > textarea {
+    resize: vertical;
+}
+.field > input[type="submit"] {
+    width: 50%;
+    cursor: pointer;
+}

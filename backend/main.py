@@ -1,11 +1,10 @@
-from flask import Flask, render_template
-from pathlib import Path
+from flask import Blueprint, render_template
+from . import login_required
 
-template_dir = Path("..", "frontend", "templates")
-static_dir = Path("..", "frontend", "static")
-app = Flask(__name__, template_folder=str(template_dir.absolute()), static_folder=(static_dir.absolute()))
+main = Blueprint('main', __name__)
 
 
-@app.route("/")
+@main.route('/')
+@login_required
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
