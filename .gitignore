@@ -14,7 +14,7 @@ build/
 .tox/
 .cache/
 .pytest_cache/
-.idea/
+backend/.idea/
 docs/_build/
 .vscode
 
