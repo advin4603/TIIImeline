@@ -8,4 +8,4 @@ One-Stop destination for all IIIT-happenings including club events, sports event
   - Websockets
 - Backend
   - Flask
-  - SqlAlchemy + sqllite3
+  - Mongo DB
