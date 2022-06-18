@@ -1,0 +1,13 @@
+.groups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.group {
+    border: solid;
+    padding: 5% 10%;
+}
+.group > h1 {
+    margin-bottom: 15%;
+}

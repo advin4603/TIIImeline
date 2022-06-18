@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block headContent %}
+    <title>TIIImeline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='create_event.css') }}">
+{% endblock %}
+
+{% block navlinks %}
+    <a href="{{ url_for('main.index') }}">
+        <li>Home</li>
+    </a>
+    <a href="{{ url_for('events.view_events') }}">
+        <li>Events</li>
+    </a>
+    <a href="{{ url_for('groups.view_groups') }}">
+        <li>Groups</li>
+    </a>
+{% endblock %}
+
+{% block content %}
+    <div class="formBox">
+        <h1>Create a Group</h1>
+        <form action="{{ url_for('groups.create_group') }}" method="post">
+            <div class="field">
+                <input placeholder="Name" name="name" id="name" type="text">
+            </div>
+            <div class="field">
+                <textarea name="description" id="description" placeholder="Description"></textarea>
+            </div>
+            <div class="field">
+                <textarea name="emails" id="emails" placeholder="Emails"></textarea>
+            </div>
+            <div class="field">
+                <input type="submit" value="Create">
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

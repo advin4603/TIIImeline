@@ -1,6 +1,6 @@
 import bson.errors
 from flask import Blueprint, render_template, request, redirect, url_for, abort
-from . import login_required, get_email, events_db
+from . import login_required, get_email, events_db, groups_db
 from bson.objectid import ObjectId
 
 events = Blueprint('events', __name__)
@@ -9,8 +9,10 @@ events = Blueprint('events', __name__)
 @events.route('/events')
 @login_required
 def view_events():
-    print(events_db.find_one())
-    return render_template('events.html')
+    email = get_email()
+    group_ids_with_user = [group["_id"] for group in groups_db.find({"$or": [{"emails": email}, {"host": email}]})]
+    users_events = events_db.find({"$or": [{"host": email}, *({"groups": g_id} for g_id in group_ids_with_user)]})
+    return render_template('events.html', events=users_events)
 
 
 @events.route("/event/<string:event_id>")

@@ -15,4 +15,18 @@
 {% endblock %}
 
 {% block content %}
+    <a href="{{ url_for('groups.create_group') }}">
+        <button>Create Group</button>
+    </a>
+    <div class="groups">
+        {% for group in groups %}
+            <div class="group">
+                <h1>{{ group["name"] }}</h1>
+                <div class="desc">{{ group["description"] }}</div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
 {% endblock %}

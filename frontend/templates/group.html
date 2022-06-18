@@ -9,20 +9,22 @@
     <a href="{{ url_for('main.index') }}">
         <li>Home</li>
     </a>
+    <a href="{{ url_for('events.view_events') }}">
+        <li>Events</li>
+    </a>
     <a href="{{ url_for('groups.view_groups') }}">
         <li>Groups</li>
     </a>
 {% endblock %}
 
 {% block content %}
-    <a href="{{ url_for('events.create_event') }}"><button>Create event</button></a>
+    <h1>
+        {{ name }}
+    </h1>
+    <div class="desc">{{ description }}</div>
+    {% for email in emails %}
+        {{ email }}
+    {% endfor %}
 
-    <div class="events">
-        {% for event in events %}
-            <div class="event">
-                <h1>{{ event["name"] }}</h1>
-                <div class="desc">{{ event["description"] }}</div>
-            </div>
-        {% endfor %}
-    </div>
+
 {% endblock %}
