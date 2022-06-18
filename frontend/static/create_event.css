@@ -42,3 +42,22 @@ main{
     width: 50%;
     cursor: pointer;
 }
+
+.checkboxes {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.checkbox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.checkbox > label {
+    margin-left: 15%;
+}

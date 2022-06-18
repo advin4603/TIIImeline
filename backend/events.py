@@ -10,7 +10,7 @@ events = Blueprint('events', __name__)
 @login_required
 def view_events():
     email = get_email()
-    group_ids_with_user = [group["_id"] for group in groups_db.find({"$or": [{"emails": email}, {"host": email}]})]
+    group_ids_with_user = (group["_id"] for group in groups_db.find({"$or": [{"emails": email}, {"host": email}]}))
     users_events = events_db.find({"$or": [{"host": email}, *({"groups": g_id} for g_id in group_ids_with_user)]})
     return render_template('events.html', events=users_events)
 
@@ -33,13 +33,17 @@ def view_event(event_id):
 @login_required
 def create_event():
     if request.method == "GET":
-        return render_template('create_event.html')
+        return render_template('create_event.html', groups=groups_db.find({"host": get_email()}))
     elif request.method == "POST":
         name = request.form["name"]
         description = request.form["description"]
         start = request.form["start"]
         end = request.form["end"]
         host = get_email()
+        group_ids = [ObjectId(id)
+                     for id in request.form
+                     if id not in {"name", "description", "start", "end", "host"}
+                     ]
         event_id = events_db.insert_one(
-            {"name": name, "description": description, "start": start, "end": end, "host": host, "groups": []})
+            {"name": name, "description": description, "start": start, "end": end, "host": host, "groups": group_ids})
         return redirect(url_for("events.view_event", event_id=event_id.inserted_id))

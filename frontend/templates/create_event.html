@@ -36,10 +36,42 @@
                 <input name="end" id="end" type="datetime-local">
             </div>
             <div class="field">
+                Add Groups
+            </div>
+            <div class="field">
+                <div class="checkboxes">
+                </div>
+            </div>
+
+            <div class="field">
                 <input type="submit" value="Create">
             </div>
 
         </form>
     </div>
+
+    <script>
+        const groups = [
+            {% for group in groups %}
+                ["{{ group["name"] }}", "{{ group["_id"] }}"],
+            {% endfor %}
+        ]
+        const checkboxes = document.querySelector(".checkboxes");
+        groups.forEach(([name, id]) => {
+            const box = document.createElement("input")
+            box.type = "checkbox"
+            box.id = id
+            box.name = id
+            box.value = id
+            const label = document.createElement("label")
+            label.for = id
+            label.innerText = name;
+            const field = document.createElement("div")
+            field.className = "checkbox"
+            field.appendChild(box)
+            field.appendChild(label)
+            checkboxes.appendChild(field)
+        })
+    </script>
 
 {% endblock %}
