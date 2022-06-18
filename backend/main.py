@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from pathlib import Path
 
 template_dir = Path("..", "frontend", "templates")
@@ -7,5 +7,5 @@ app = Flask(__name__, template_folder=str(template_dir.absolute()), static_folde
 
 
 @app.route("/")
-def hello_world():
-    return "TIIImeline"
+def index():
+    return render_template("index.html")
