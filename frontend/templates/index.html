@@ -3,7 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>TIIImeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
+<header>
+    <nav>
+        <ul>
+            <li class="logo">TIIImeline</li>
+            <a href="">
+                <li>Home</li>
+            </a>
+            <a href="">
+                <li>Create</li>
+            </a>
+            <a href="">
+                <li>Search</li>
+            </a>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Today's Events</h1>
+    <ul>
+        <li>
+            <div class="event">
+                <div class="eventName">Event 1</div>
+                <div class="eventBody">Event Description</div>
+                <div class="eventTime">Today, 1800</div>
+            </div>
+        </li>
+        <li>
+            <div class="event">
+                <div class="eventName">Event 2</div>
+                <div class="eventBody">Event Description</div>
+                <div class="eventTime">Today, 1900</div>
+            </div>
+        </li>
+        <li>
+            <div class="event">
+                <div class="eventName">Event 3</div>
+                <div class="eventBody">Event Description</div>
+                <div class="eventTime">Today, 2000</div>
+            </div>
+        </li>
+        <li>
+            <div class="event">
+                <div class="eventName">Event 4</div>
+                <div class="eventBody">Event Description</div>
+                <div class="eventTime">Today, 2100</div>
+            </div>
+        </li>
+        <li>
+            <div class="event">
+                <div class="eventName">Event 5</div>
+                <div class="eventBody">Event Description</div>
+                <div class="eventTime">Today, 2200</div>
+            </div>
+        </li>
+    </ul>
+</main>
 </body>
 </html>
