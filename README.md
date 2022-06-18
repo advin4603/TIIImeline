@@ -1,3 +1,11 @@
 # IIIT-Timeline
 
-one-stop place for all IIIT-events including club events , sports events , academic calender ,assignments deadline . it will be personalised for every indivisual . a user can add-remove-update his timeline . 
+One-Stop destination for all IIIT-happenings including club events, sports events, classes ,assignment deadlines, evals, quzzes. Personalised for all users. Schedule or update events for you or a community. Update users with scores for sports events, change in venue or time, etc.
+
+## Tech Stack
+-Frontend
+  -React
+  -Websockets
+-Backend
+  -Flask
+  -SqlAlchemy + sqllite3
