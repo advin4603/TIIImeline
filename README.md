@@ -4,7 +4,7 @@ One-Stop destination for all IIIT-happenings including club events, sports event
 
 ## Tech Stack
 - Frontend
-  - React
+  - HTML, CSS, Vanilla JS
   - Websockets
 - Backend
   - Flask
