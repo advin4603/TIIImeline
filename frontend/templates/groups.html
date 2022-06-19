@@ -1,32 +1,38 @@
 {% extends "base.html" %}
 
 {% block headContent %}
-    <title>TIIImeline</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='groups.css') }}">
+<title>TIIImeline</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='groups.css') }}">
 {% endblock %}
 
 {% block navlinks %}
-    <a href="{{ url_for('main.index') }}">
-        <li>Home</li>
-    </a>
-    <a href="{{ url_for('events.view_events') }}">
-        <li>Events</li>
-    </a>
+<a href="{{ url_for('main.index') }}">
+    <li>Home</li>
+</a>
+<a href="{{ url_for('events.view_events') }}">
+    <li>Events</li>
+</a>
 {% endblock %}
 
 {% block content %}
-    <a href="{{ url_for('groups.create_group') }}">
-        <button>Create Group</button>
-    </a>
-    <div class="groups">
-        {% for group in groups %}
-            <div class="group">
-                <h1>{{ group["name"] }}</h1>
-                <div class="desc">{{ group["description"] }}</div>
-            </div>
-
+<a href="{{ url_for('groups.create_group') }}">
+    <button>Create Group</button>
+</a>
+<div class="groups">
+    {% for group in groups %}
+    <a href="{{ url_for('groups.view_group', group_id=group['_id']) }}" <div class="group">
+        <h2>{{ group["name"] }}</h2>
+        <div class="desc">{{ group["description"] }}</div>
+        <div class="emails">
+            Members of the group
+            {% for email in group["emails"] %}
+            <div class="email">{{ email }}</div>
         {% endfor %}
     </div>
+</div>
+
+{% endfor %}
+</div>
 
 
 {% endblock %}
