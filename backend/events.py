@@ -28,7 +28,8 @@ def view_event(event_id):
             abort(404)
 
         found_groups = groups_db.find({"_id": {"$in": found_event["groups"]}})
-        return render_template("event.html", **found_event, found_groups=list(found_groups))
+        return render_template("event.html", **found_event, found_groups=list(found_groups),
+                               is_host=found_event["host"] == get_email())
 
 
 @events.route('/event', methods=['GET', 'POST'])
@@ -59,10 +60,42 @@ def edit_event(event_id):
     except bson.errors.InvalidId:
         abort(404)
         return
-    edit_event = events_db.find_one({"_id": event_id_obj})
-    if edit_event is None:
+    edit_this_event = events_db.find_one({"_id": event_id_obj})
+    if edit_this_event is None or edit_this_event["host"] != get_email():
         abort(404)
         return
 
     if request.method == "GET":
-        return render_template("edit_event.html", event=edit_event, groups=groups_db.find({"host": get_email()}))
+        return render_template("edit_event.html", event=edit_this_event, groups=groups_db.find({"host": get_email()}))
+    elif request.method == "POST":
+        query = {"_id": event_id_obj}
+        name = request.form["name"]
+        description = request.form["description"]
+        start = request.form["start"]
+        end = request.form["end"]
+        host = get_email()
+        group_ids = [ObjectId(id)
+                     for id in request.form
+                     if id not in {"name", "description", "start", "end", "host"}
+                     ]
+        new_values = {"name": name, "description": description, "start": start, "end": end, "host": host,
+                      "groups": group_ids}
+        events_db.update_one(query, {"$set": new_values})
+        return redirect(url_for("events.view_event", event_id=edit_this_event["_id"]))
+
+
+@events.route("/deleteEvent/<string:event_id>")
+@login_required
+def delete_event(event_id):
+    try:
+        event_id_obj = ObjectId(event_id)
+    except bson.errors.InvalidId:
+        abort(404)
+        return
+    delete_this_event = events_db.find_one({"_id": event_id_obj})
+    if delete_this_event is None or delete_this_event["host"] != get_email():
+        abort(404)
+        return
+
+    print(events_db.delete_one({"_id": event_id_obj}))
+    return redirect(url_for("events.view_events"))
