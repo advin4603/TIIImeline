@@ -28,15 +28,21 @@
     </div>
 
     <div class="groups">
-        {% for group in groups %}
-            <a href="{{ url_for('groups.view_group', group_id=group['_id']) }}">
-                <div class="group">
-                    <h1>{{ group["name"] }}</h1>
-                    <div class="desc">{{ group["description"] }}</div>
-                </div>
-            </a>
+        {% if groups|length > 0 %}
+            {% for group in groups %}
+                <a href="{{ url_for('groups.view_group', group_id=group['_id']) }}">
+                    <div class="group">
+                        <h1>{{ group["name"] }}</h1>
+                        <div class="desc">{{ group["description"] }}</div>
+                    </div>
+                </a>
 
-        {% endfor %}
+            {% endfor %}
+        {% elif search_query %}
+            <div class="centerText">No Groups Found</div>
+        {% else %}
+            <div class="centerText">You are in no groups.</div>
+        {% endif %}
     </div>
 
 

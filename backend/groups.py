@@ -13,7 +13,7 @@ def view_groups():
     users_groups = groups_db.find(
         {"$and": [{"name": {"$regex": "^" + request.args.get("searchQuery", ""), '$options': 'i'}},
                   {"$or": [{"host": email}, {"emails": email}]}]})
-    return render_template('groups.html', groups=users_groups, search_query=request.args.get("searchQuery", ""))
+    return render_template('groups.html', groups=list(users_groups), search_query=request.args.get("searchQuery", ""))
 
 
 @groups.route("/group/<string:group_id>")

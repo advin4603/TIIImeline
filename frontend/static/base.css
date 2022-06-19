@@ -53,3 +53,8 @@ nav > ul > a {
     border-color: black;
     padding: 5% 10%;
 }
+
+.centerText {
+    text-align: center;
+    margin: 5%;
+}

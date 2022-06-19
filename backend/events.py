@@ -15,7 +15,7 @@ def view_events():
     users_events = events_db.find(
         {"$and": [{"name": {"$regex": "^" + request.args.get("searchQuery", ""), '$options': 'i'}}, {
             "$or": [{"host": email}, *({"groups": g_id} for g_id in group_ids_with_user)]}]})
-    return render_template('events.html', events=users_events, search_query=request.args.get("searchQuery", ""))
+    return render_template('events.html', events=list(users_events), search_query=request.args.get("searchQuery", ""))
 
 
 @events.route("/event/<string:event_id>")
