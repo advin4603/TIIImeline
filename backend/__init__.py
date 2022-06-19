@@ -3,6 +3,7 @@ from flask_cas import CAS
 from functools import wraps
 from pathlib import Path
 from pymongo import MongoClient
+from datetime import datetime
 
 client = MongoClient("localhost", 27017)
 mongodb = client.TIIImeline
@@ -48,3 +49,7 @@ def login_required(f):
 
 def get_email():
     return session["CAS_ATTRIBUTES"]["cas:E-Mail"]
+
+
+def prettify_date(date):
+    return datetime.strptime(date, "%Y-%m-%dT%H:%M").ctime()
