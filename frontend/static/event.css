@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.eventDetails {
+    border: solid;
+    padding: 5% 10%;
+    width: 40%;
+    margin-bottom: 5%;
+}
+
+.eventDetails > .heading {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.eventDetails > .by {
+    margin-bottom: 5%;
+}
+.eventDetails > .datetime {
+    margin-top: 5%;
+    float: right;
+}
+
+.groups {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.groups > * {
+    margin-bottom: 2%;
+}

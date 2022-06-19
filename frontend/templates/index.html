@@ -15,42 +15,32 @@
 {% endblock %}
 
 {% block content %}
+    <h1>Ongoing Events</h1>
+    <ul>
+        <li>
+            {% for ongoing_event in ongoing_events %}
+                <a href="{{ url_for('events.view_event', event_id=ongoing_event["_id"]) }}">
+                    <div class="event">
+                        <div class="eventName">{{ ongoing_event["name"] }}</div>
+                        <div class="eventBody">{{ ongoing_event["description"] }}</div>
+                        <div class="eventTime">Ends on: {{ ongoing_event["end"] }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </li>
+    </ul>
     <h1>Upcoming Events</h1>
     <ul>
         <li>
-            <div class="event">
-                <div class="eventName">Event 1</div>
-                <div class="eventBody">Event Description</div>
-                <div class="eventTime">Today, 1800</div>
-            </div>
-        </li>
-        <li>
-            <div class="event">
-                <div class="eventName">Event 2</div>
-                <div class="eventBody">Event Description</div>
-                <div class="eventTime">Today, 1900</div>
-            </div>
-        </li>
-        <li>
-            <div class="event">
-                <div class="eventName">Event 3</div>
-                <div class="eventBody">Event Description</div>
-                <div class="eventTime">Today, 2000</div>
-            </div>
-        </li>
-        <li>
-            <div class="event">
-                <div class="eventName">Event 4</div>
-                <div class="eventBody">Event Description</div>
-                <div class="eventTime">Today, 2100</div>
-            </div>
-        </li>
-        <li>
-            <div class="event">
-                <div class="eventName">Event 5</div>
-                <div class="eventBody">Event Description</div>
-                <div class="eventTime">Today, 2200</div>
-            </div>
+            {% for upcoming_event in upcoming_events %}
+                <a href="{{ url_for('events.view_event', event_id=upcoming_event["_id"]) }}">
+                    <div class="event">
+                        <div class="eventName">{{ upcoming_event["name"] }}</div>
+                        <div class="eventBody">{{ upcoming_event["description"] }}</div>
+                        <div class="eventTime">Starts on: {{ upcoming_event["end"] }}</div>
+                    </div>
+                </a>
+            {% endfor %}
         </li>
     </ul>
 {% endblock %}

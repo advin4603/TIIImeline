@@ -16,13 +16,15 @@
 
 {% block content %}
     <a href="{{ url_for('events.create_event') }}"><button>Create event</button></a>
-
     <div class="events">
         {% for event in events %}
+            <a href="{{ url_for('events.view_event', event_id=event["_id"]) }}">
             <div class="event">
-                <h1>{{ event["name"] }}</h1>
+                <h1 class="eventName">{{ event["name"] }}</h1>
                 <div class="desc">{{ event["description"] }}</div>
+                <div class="eventTime">{{ event["start"] }}</div>
             </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}

@@ -23,10 +23,12 @@ def view_event(event_id):
     except bson.errors.InvalidId:
         abort(404)
     else:
-        event = events_db.find_one({"_id": event_id_obj})
-        if event is None:
+        found_event = events_db.find_one({"_id": event_id_obj})
+        if found_event is None:
             abort(404)
-        return render_template("event.html", **event)
+
+        found_groups = groups_db.find({"_id": {"$in": found_event["groups"]}})
+        return render_template("event.html", **found_event, found_groups=list(found_groups))
 
 
 @events.route('/event', methods=['GET', 'POST'])
@@ -47,3 +49,20 @@ def create_event():
         event_id = events_db.insert_one(
             {"name": name, "description": description, "start": start, "end": end, "host": host, "groups": group_ids})
         return redirect(url_for("events.view_event", event_id=event_id.inserted_id))
+
+
+@events.route('/editEvent/<string:event_id>', methods=['GET', 'POST'])
+@login_required
+def edit_event(event_id):
+    try:
+        event_id_obj = ObjectId(event_id)
+    except bson.errors.InvalidId:
+        abort(404)
+        return
+    edit_event = events_db.find_one({"_id": event_id_obj})
+    if edit_event is None:
+        abort(404)
+        return
+
+    if request.method == "GET":
+        return render_template("edit_event.html", event=edit_event, groups=groups_db.find({"host": get_email()}))

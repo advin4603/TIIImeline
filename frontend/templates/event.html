@@ -2,7 +2,7 @@
 
 {% block headContent %}
     <title>TIIImeline</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='events.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='event.css') }}">
 {% endblock %}
 
 {% block navlinks %}
@@ -18,9 +18,35 @@
 {% endblock %}
 
 {% block content %}
-    <h1>
-        {{ name }}
-    </h1>
-    <div class="desc">{{ description }}</div>
+    <div class="eventDetails">
+        <div class="heading">
+            <h1>
+                {{ name }}
+            </h1>
+            <a href="{{ url_for('events.edit_event', event_id=_id) }}">
+                <button>edit</button>
+            </a>
+        </div>
+        <div class="by">Host: {{ host }}</div>
+        <div class="desc">{{ description }}</div>
+
+
+        {% if found_groups|length > 0 %}
+            <div class="groups">
+                <h1>
+                    Groups:
+                </h1>
+                {% for group in found_groups %}
+                    <div class="group">{{ group["name"] }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="datetime">
+            <div class="start">{{ start }}</div>
+            <div class="end">{{ end }}</div>
+        </div>
+
+    </div>
+
 
 {% endblock %}

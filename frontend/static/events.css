@@ -1,0 +1,17 @@
+.event {
+    border: solid;
+    margin: 2% 10%;
+    padding: 5% 10%;
+    background-color: black;
+    color: white;
+    border-color: gray;
+}
+.eventName {
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+.eventTime{
+    float: right;
+}
