@@ -96,6 +96,5 @@ def delete_event(event_id):
     if delete_this_event is None or delete_this_event["host"] != get_email():
         abort(404)
         return
-
-    print(events_db.delete_one({"_id": event_id_obj}))
+    events_db.delete_one({"_id": event_id_obj})
     return redirect(url_for("events.view_events"))

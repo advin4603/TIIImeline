@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block headContent %}
+    <title>TIIImeline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='create_event.css') }}">
+{% endblock %}
+
+{% block navlinks %}
+    <a href="{{ url_for('main.index') }}">
+        <li>Home</li>
+    </a>
+    <a href="{{ url_for('events.view_events') }}">
+        <li>Events</li>
+    </a>
+    <a href="{{ url_for('groups.view_groups') }}">
+        <li>Groups</li>
+    </a>
+{% endblock %}
+
+{% block content %}
+    <div class="formBox">
+        <h1>Edit Group</h1>
+        <form action="{{ url_for('groups.edit_group', group_id=group['_id']) }}" method="post">
+            <div class="field">
+                <input placeholder="Name" name="name" id="name" type="text" value="{{ group['name'] }}">
+            </div>
+            <div class="field">
+                <textarea name="description" id="description" placeholder="Description">{{ group['description'] }}</textarea>
+            </div>
+            <div class="field">
+                <textarea name="emails" id="emails" placeholder="Emails">{{ emails }}</textarea>
+            </div>
+            <div class="field">
+                <input type="submit" value="Edit">
+            </div>
+
+        </form>
+        <div class="field">
+            <a href="{{ url_for('groups.delete_group', group_id=group['_id']) }}">
+                <button>Delete Event</button>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

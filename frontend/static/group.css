@@ -1,0 +1,32 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupDetails{
+    border: solid;
+    padding: 5% 10%;
+    width: 40%;
+    margin-bottom: 5%;
+}
+
+.groupDetails > .heading {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.groupDetails > .host {
+    margin-bottom: 5%;
+}
+.emails {
+    margin-top: 5%;
+}
+.emails > h2 {
+    margin-bottom: 3%;
+}
+.email {
+    margin-bottom: 2%;
+}

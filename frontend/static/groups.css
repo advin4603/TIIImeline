@@ -4,10 +4,17 @@
     align-items: center;
     justify-content: center;
 }
+.groups > a {
+    width: 40%;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 5%;
+}
 .group {
     border: solid;
     padding: 5% 10%;
 }
 .group > h1 {
-    margin-bottom: 15%;
+    margin-bottom: 5%;
 }
+
