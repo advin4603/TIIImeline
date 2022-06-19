@@ -6,12 +6,39 @@
     color: white;
     border-color: gray;
 }
+
 .eventName {
     font-size: larger;
     font-weight: bold;
     margin-bottom: 2%;
 }
 
-.eventTime{
+.eventTime {
     float: right;
+}
+
+.eventsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10%;
+}
+.search {
+    width: 50%;
+}
+.searchBox {
+    width: 50%;
+    padding: 1% 2%;
+}
+.search > form > input[type="submit"] {
+    padding: 1% 2%;
+}
+
+form > input,textarea {
+    border: solid;
+    background-color: gray;
+}
+form > input::placeholder {
+    color: black;
+    border-color: initial;
 }

@@ -15,16 +15,25 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{{ url_for('groups.create_group') }}">
-        <button>Create Group</button>
-    </a>
+    <div class="groupsHeader">
+        <div class="search">
+            <form action="{{ url_for('groups.view_groups') }}">
+                <input type="text" class="searchBox" id="searchQuery" name="searchQuery" value="{{ search_query }}">
+                <input type="submit" class="btn" value="Search">
+            </form>
+        </div>
+        <a href="{{ url_for('groups.create_group') }}">
+            <button class="btn">Create Group</button>
+        </a>
+    </div>
+
     <div class="groups">
         {% for group in groups %}
             <a href="{{ url_for('groups.view_group', group_id=group['_id']) }}">
-            <div class="group">
-                <h1>{{ group["name"] }}</h1>
-                <div class="desc">{{ group["description"] }}</div>
-            </div>
+                <div class="group">
+                    <h1>{{ group["name"] }}</h1>
+                    <div class="desc">{{ group["description"] }}</div>
+                </div>
             </a>
 
         {% endfor %}

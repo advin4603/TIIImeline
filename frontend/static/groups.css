@@ -18,3 +18,28 @@
     margin-bottom: 5%;
 }
 
+.groupsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2% 10%;
+}
+.search {
+    width: 50%;
+}
+.searchBox {
+    width: 50%;
+    padding: 1% 2%;
+}
+.search > form > input[type="submit"] {
+    padding: 1% 2%;
+}
+
+form > input,textarea {
+    border: solid;
+    background-color: gray;
+}
+form > input::placeholder {
+    color: black;
+    border-color: initial;
+}

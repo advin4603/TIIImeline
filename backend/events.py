@@ -10,9 +10,12 @@ events = Blueprint('events', __name__)
 @login_required
 def view_events():
     email = get_email()
-    group_ids_with_user = (group["_id"] for group in groups_db.find({"$or": [{"emails": email}, {"host": email}]}))
-    users_events = events_db.find({"$or": [{"host": email}, *({"groups": g_id} for g_id in group_ids_with_user)]})
-    return render_template('events.html', events=users_events)
+    group_ids_with_user = (group["_id"] for group in
+                           groups_db.find({"$or": [{"emails": email}, {"host": email}]}))
+    users_events = events_db.find(
+        {"$and": [{"name": {"$regex": "^" + request.args.get("searchQuery", ""), '$options': 'i'}}, {
+            "$or": [{"host": email}, *({"groups": g_id} for g_id in group_ids_with_user)]}]})
+    return render_template('events.html', events=users_events, search_query=request.args.get("searchQuery", ""))
 
 
 @events.route("/event/<string:event_id>")

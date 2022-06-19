@@ -5,12 +5,18 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 html, body {
     min: 100%;
 }
+
 .logo {
     width: 10%;
 }
+
 .logo > img {
     width: 50%;
 }
@@ -38,4 +44,11 @@ nav > ul > a {
     color: white;
     padding: 1% 5%;
     border: solid;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: inherit;
+    border-color: black;
+    padding: 5% 10%;
 }

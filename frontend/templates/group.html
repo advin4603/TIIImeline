@@ -25,11 +25,11 @@
             </h1>
             {% if is_host %}
                 <a href="{{ url_for('groups.edit_group', group_id=_id) }}">
-                    <button>edit</button>
+                    <button class="btn">edit</button>
                 </a>
             {% else %}
                 <a href="{{ url_for('groups.leave_group', group_id=_id) }}">
-                    <button>leave</button>
+                    <button class="btn">leave</button>
                 </a>
             {% endif %}
         </div>
