@@ -23,9 +23,12 @@
             <h1>
                 {{ name }}
             </h1>
-            <a href="{{ url_for('events.edit_event', event_id=_id) }}">
-                <button>edit</button>
-            </a>
+            {% if is_host %}
+                <a href="{{ url_for('events.edit_event', event_id=_id) }}">
+                    <button>edit</button>
+                </a>
+            {% endif %}
+
         </div>
         <div class="by">Host: {{ host }}</div>
         <div class="desc">{{ description }}</div>
