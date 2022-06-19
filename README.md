@@ -5,7 +5,6 @@ One-Stop destination for all IIIT-happenings including club events, sports event
 ## Tech Stack
 - Frontend
   - HTML, CSS, Vanilla JS
-  - Websockets
 - Backend
   - Flask
   - Mongo DB
